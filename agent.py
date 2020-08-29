@@ -13,9 +13,9 @@ def getAlunos():
 	alunos = data['students']
 	return alunos
 
+#reproduz nome dos alunos
 def playVoice(aluno):
-  language = 'pt-br'
-  output = gTTS(text=aluno, lang=language, slow=False)
+  output = gTTS(text=aluno, lang='pt-br', slow=False)
   output.save('output.mp3')
   os.system("start output.mp3")
   print(aluno)
@@ -60,9 +60,9 @@ def chamada():
       if aluno in alunosChamados:
         continue
       else:
-        time.sleep(horario)
-        playVoice(aluno)
-        alunosChamados.append(aluno)
+        time.sleep(horario)#pausa da chamada entre os nomes
+        playVoice(aluno)#reproduz o som do nome do aluno
+        alunosChamados.append(aluno)#acrescenta o aluno em outro vetor para comparação
         calltime += 1
 
     alunosChamados[:] = [] #depois do while finalizado, o array é zerado para a próxima chamada
